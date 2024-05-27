@@ -29,7 +29,7 @@ public class MergeSort<T extends Comparable<T>> extends Sort<T> {
 		T[] tempList = Arrays.copyOfRange(dataList, start, end + 1);
 		
 		int i = 0 , j = mid - start + 1, k = start;
-		// i 와 j가 start ~ end 사이에 있는 동안만 반복
+		// i 와 j가 start ~ end 사이에 있는 동안 배열 정렬
 		while (i < mid - start && j <= end - start) {
 			// tempList[i]가 tempList[j]보다 작거나 같으면 tempList[i++]를 dataList[start++]에 넣는다
 			if (tempList[i].compareTo(tempList[j]) <= 0)
@@ -38,9 +38,11 @@ public class MergeSort<T extends Comparable<T>> extends Sort<T> {
 				dataList[k++] = tempList[j++];
 		}
 		
+		// 남은 원소를 dataList에 복사한다.
 		while (i < mid - start + 1) dataList[k++] = tempList[i++];
 		while (j <= end - start) dataList[k++] = tempList[j++];
 		
+		// 배열 병합
 		for (i = start, k = 0; k < tempList.length; i++, k++)
 			dataList[i] = tempList[k];
 		
